@@ -2,9 +2,11 @@
 
 Every step is to be executed on the home directory. Use `cd` to move to home directory.
 
-The commands in the guide use ```$USER``` as the notation for your username. 
+The commands in the guide use ```USER``` as the notation for your username. If you have executed A0 correctly, then this should be your SRN in lowercase. This is important since the auto-evaluation depends on it. Verify your username by running `whoami` on the terminal.
 
-Change any `/home/$USER/` to `/home/<your SRN>/`
+Change any `/home/USER/` to `/home/<your SRN>/`
+
+This manual includes steps that you will be doing in the classroom. It assumes that you have completed steps 1 and 3 from your home which was emailed earlier. If you have not completed these steps, then click [here](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/H1_HOME.md) to do so.
 
 Execute the following commands to move to the home directory and updating the package list and the system. This guide assumes that you are working with Ubuntu or a Debian based distribution.
 ```bash
@@ -12,19 +14,8 @@ cd
 sudo apt update -y
 sudo apt upgrade -y
 ```
-## Step 1 - Installing Java
 
-Since Hadoop 3.3.3 may not support newer versions of Java, we install Java 8 using the following command.
-```bash
-sudo apt install openjdk-8-jdk -y
-```
-
-Check if Java is successfully installed and the version with the following commands.
-```bash
-java -version
-javac -version
-```
-## Step 2 - Setup passwordless SSH for Hadoop
+## Step 1 - Setup passwordless SSH for Hadoop
 
 We install the following packages to allow us to setup an ssh server on the system as well as a client to remote into it with the following commands.
 ```bash
@@ -45,20 +36,14 @@ Verify passwordless SSH is setup and working with
 ssh localhost
 ```
 
-If the above command does not ask you for a password, you have successfully setup passwordless SSH.
+If the above command does not ask you for a password, you have successfully setup passwordless SSH. Take a screenshot of the terminal and name is 1a.png.
+
+![1a.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/1a.png)
 
 Type `exit` or press ```Ctrl+d``` to quit the SSH session.
 
-## Step 3 - Downloading Hadoop
 
-Use the link given below to download and extract hadoop using the following commands.
-```bash
-cd
-wget https://dlcdn.apache.org/hadoop/common/hadoop-3.3.3/hadoop-3.3.3.tar.gz
-tar xzf /home/$USER/hadoop-3.3.3.tar.gz
-```
-
-## Step 4 - Single Node Deployment
+## Step 2 - Single Node Deployment
 
 The current setup is called pseudo-distributed mode, allows each Hadoop daemon to run as a single Java process. A Hadoop environment is configured by editing the following list of configuration files:
 
@@ -78,12 +63,12 @@ mkdir tmpdata
 mkdir dfsdata/datanode
 mkdir dfsdata/namenode
 ```
-Change permissions for the directories using the following commands. Remember to replace `$USER` with your username.
+Change permissions for the directories using the following commands. Remember to replace `USER` with your username.
 
 ```bash
-sudo chown -R $USER:$USER /home/$USER/dfsdata/
-sudo chown -R $USER:$USER /home/$USER/dfsdata/datanode/
-sudo chown -R $USER:$USER /home/$USER/dfsdata/namenode/
+sudo chown -R USER:USER /home/USER/dfsdata/
+sudo chown -R USER:USER /home/USER/dfsdata/datanode/
+sudo chown -R USER:USER /home/USER/dfsdata/namenode/
 ```
 
 ### Editing and Setting up the ~/.bashrc config file
@@ -95,7 +80,7 @@ sudo nano ~/.bashrc
 Scroll to the bottom of the file. Copy and paste the below mentioned statements to the end of the file.
 ```bash
 #Hadoop Path Configs
-export HADOOP_HOME=/home/$USER/hadoop-3.3.3
+export HADOOP_HOME=/home/USER/hadoop-3.3.3
 export HADOOP_INSTALL=$HADOOP_HOME
 export HADOOP_MAPRED_HOME=$HADOOP_HOME
 export HADOOP_COMMON_HOME=$HADOOP_HOME
@@ -105,6 +90,10 @@ export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native
 export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 export HADOOP_OPTS="Djava.library.path=$HADOOP_HOME/lib/native"
 ```
+
+Take a screenshot at this stage and name it 2a.png. Make sure the filename on the top with the path is visible in the screenshot.
+
+![2a.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/2a.png)
 
 Press ```Ctrl+o``` to save and ```Ctrl+x``` to exit nano . Apply changes to ```bash``` with the following command.
 ```bash
@@ -128,6 +117,10 @@ Scroll down until you find the commented line `# export JAVA_HOME=`. Uncomment t
 export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 ```
 
+Take a screenshot at this stage and name it 2b.png. Make sure the filename on the top with the path is visible in the screenshot.
+
+![2b.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/2b.png)
+
 Save and exit the file as shown previously.
 
 ### Setup core-site.xml
@@ -141,7 +134,7 @@ Replace the existing configuration tags with the following
 <configuration>
 <property>
   <name>hadoop.tmp.dir</name>
-  <value>/home/$USER/tmpdata</value>
+  <value>/home/USER/tmpdata</value>
 </property>
 <property>
   <name>fs.default.name</name>
@@ -149,6 +142,10 @@ Replace the existing configuration tags with the following
 </property>
 </configuration>
 ```
+
+Take a screenshot of the file and name it 2c.png. Make sure the filename on the top with the path is visible in the screenshot.
+
+![2c.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/2c.png)
 
 Save and exit the file. 
 
@@ -164,11 +161,11 @@ Replace the existing configuration tags with the following
 <configuration>
 <property>
   <name>dfs.name.dir</name>
-  <value>/home/$USER/dfsdata/namenode</value>
+  <value>/home/USER/dfsdata/namenode</value>
 </property>
 <property>
   <name>dfs.data.dir</name>
-  <value>/home/$USER/dfsdata/datanode</value>
+  <value>/home/USER/dfsdata/datanode</value>
 </property>
 <property>
   <name>dfs.replication</name>
@@ -177,7 +174,11 @@ Replace the existing configuration tags with the following
 </configuration>
 ```
 
- Save and exit the file after making all the changes.
+Take a screenshot of the file and name it 2d.png. Make sure the filename on the top with the path is visible in the screenshot.
+
+![2d.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/2d.png)
+
+Save and exit the file after making all the changes.
 
 ### Setup mapred-site.xml
 
@@ -194,6 +195,10 @@ Replace the existing configuration tags with the following
 </property> 
 </configuration>
 ```
+
+Take a screenshot of the file and name it 2e.png. Make sure the filename on the top with the path is visible in the screenshot.
+
+![2e.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/2e.png)
 
 Save and exit the file.
 
@@ -229,9 +234,13 @@ Replace the existing configuration tags with the following
 </configuration>
 ```
 
+Take a screenshot of the file and name it 2f.png. Make sure the filename on the top with the path is visible in the screenshot.
+
+![2f.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/2f.png)
+
 Save and exit the file.
 
-## Step 5 - Format HDFS NameNode
+## Step 3 - Format HDFS NameNode
 
 Before starting Hadoop for the first time, the namenode must be formatted. Use the following command.
 ```bash
@@ -242,7 +251,11 @@ A `SHUTDOWN` message will signify the end of the formatting process.
 
 If you have reached this stage, it signifies that you have successfully installed hadoop.
 
-## Step 6 - Starting Hadoop
+Take a screenshot of the terminal output indicating the shutdown message and name it 3a.png.
+
+![3a.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/3a.png)
+
+## Step 4 - Starting Hadoop
 
 Navigate to the ```hadoop``` folder and execute the following commands. ``start-all.sh`` is a shell script that is used to start all the processes that hadoop requires.
 
@@ -263,7 +276,11 @@ Type `jps` to find all the Java Processes started by the shell script. You shoul
 3566 NodeManager
 ```
 
-## Step 7 - Accessing Hadoop from the Browser
+Take a screenshot of the terminal output and name it 4a.png.
+
+![4a.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/4a.png)
+
+## Step 5 - Accessing Hadoop from the Browser
 You can access Hadoop on ```localhost  ``` on the following ports
 * NameNode - http://localhost:9870
 * DataNode - http://localhost:9864
@@ -276,3 +293,20 @@ cd
 cd hadoop-3.3.3/sbin/
 ./stop-all.sh
 ```
+
+## Step 6 - Auto-evaluation
+For your hands-on auto-evaluation, clone this repo first.
+
+```bash
+git clone https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1.git
+```
+
+Then, just run eval.pyc.
+
+```bash
+python3 eval.pyc
+```
+
+## Step 7 - Final Assessment
+Make a word document with all the screenshots and upload the PDF to this [link](https://forms.gle/QZQZQZQZQZQZQZQ).
+Your file should be named with the format ```PES1UG20CS999.pdf``` with your SRN.
