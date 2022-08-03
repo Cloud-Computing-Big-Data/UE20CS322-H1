@@ -106,7 +106,7 @@ export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin
 export HADOOP_OPTS="Djava.library.path=$HADOOP_HOME/lib/native"
 ```
 
-Press ```Ctrl+s``` to save and ```Ctrl+x``` to exit nano . Apply changes to ```bash``` with the following command.
+Press ```Ctrl+o``` to save and ```Ctrl+x``` to exit nano . Apply changes to ```bash``` with the following command.
 ```bash
 source ~/.bashrc
 ```
