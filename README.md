@@ -348,6 +348,6 @@ cd hadoop-3.3.3/sbin/
 ./stop-all.sh
 ```
 
-## Step 7 - Final Assessment
+## Step 8 - Final Assessment
 Make a word document with all the screenshots and upload the PDF to this [link](https://forms.gle/QZQZQZQZQZQZQZQ).
 Your file should be named with the format ```PES1UG20CS999.pdf``` with your SRN.
