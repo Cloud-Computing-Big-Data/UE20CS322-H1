@@ -38,7 +38,7 @@ ssh localhost
 
 If the above command does not ask you for a password, you have successfully setup passwordless SSH. Take a screenshot of the terminal and name is 1a.png.
 
-![1a.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/1a.png)
+![1a.png](screenshots/1a.png)
 
 Type `exit` or press ```Ctrl+d``` to quit the SSH session.
 
@@ -93,7 +93,7 @@ export HADOOP_OPTS="Djava.library.path=$HADOOP_HOME/lib/native"
 
 Take a screenshot at this stage and name it 2a.png. Make sure the filename on the top with the path is visible in the screenshot.
 
-![2a.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/2a.png)
+![2a.png](screenshots/2a.png)
 
 Press ```Ctrl+o``` to save and ```Ctrl+x``` to exit nano . Apply changes to ```bash``` with the following command.
 ```bash
@@ -119,7 +119,7 @@ export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
 
 Take a screenshot at this stage and name it 2b.png. Make sure the filename on the top with the path is visible in the screenshot.
 
-![2b.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/2b.png)
+![2b.png](screenshots/2b.png)
 
 Save and exit the file as shown previously.
 
@@ -145,7 +145,7 @@ Replace the existing configuration tags with the following
 
 Take a screenshot of the file and name it 2c.png. Make sure the filename on the top with the path is visible in the screenshot.
 
-![2c.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/2c.png)
+![2c.png](screenshots/2c.png)
 
 Save and exit the file. 
 
@@ -176,7 +176,7 @@ Replace the existing configuration tags with the following
 
 Take a screenshot of the file and name it 2d.png. Make sure the filename on the top with the path is visible in the screenshot.
 
-![2d.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/2d.png)
+![2d.png](screenshots/2d.png)
 
 Save and exit the file after making all the changes.
 
@@ -198,7 +198,7 @@ Replace the existing configuration tags with the following
 
 Take a screenshot of the file and name it 2e.png. Make sure the filename on the top with the path is visible in the screenshot.
 
-![2e.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/2e.png)
+![2e.png](screenshots/2e.png)
 
 Save and exit the file.
 
@@ -236,7 +236,7 @@ Replace the existing configuration tags with the following
 
 Take a screenshot of the file and name it 2f.png. Make sure the filename on the top with the path is visible in the screenshot.
 
-![2f.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/2f.png)
+![2f.png](screenshots/2f.png)
 
 Save and exit the file.
 
@@ -253,7 +253,7 @@ If you have reached this stage, it signifies that you have successfully installe
 
 Take a screenshot of the terminal output indicating the shutdown message and name it 3a.png.
 
-![3a.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/3a.png)
+![3a.png](screenshots/3a.png)
 
 ## Step 4 - Starting Hadoop
 
@@ -278,7 +278,7 @@ Type `jps` to find all the Java Processes started by the shell script. You shoul
 
 Take a screenshot of the terminal output and name it 4a.png.
 
-![4a.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/4a.png)
+![4a.png](screenshots/4a.png)
 
 ## Step 5 - Accessing Hadoop from the Browser
 You can access Hadoop on ```localhost  ``` on the following ports
@@ -321,7 +321,7 @@ hdfs dfs -cat /handson/output-tech/part-00000
 
 Take a screenshot of the terminal output and name it 6a.png.
 
-![6a.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/6a.png)
+![6a.png](screenshots/6a.png)
 
 ## Step 7 - Auto-evaluation
 Auto-evaluation is allowed only once. So make sure you have the following checklist ticked before proceeding.
