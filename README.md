@@ -286,25 +286,66 @@ You can access Hadoop on ```localhost  ``` on the following ports
 * DataNode - http://localhost:9864
 * YARN Manager - http://localhost:8088
 
+## Step 6 - Running WordCount
+Now, we will run a sample HDFS commmand to calculate the frequency of a particular word in a text file.
+Firstly, clone the GitHub repository.
+```bash
+git clone https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1.git
+```
+This repo contains a sample mapper, reducer and a dataset file named tech.txt.
+Run the following commands to setup HDFS directories and copy the dataset file to the HDFS.
+
+```bash
+cd UE20CS322-H1/
+hdfs dfs -mkdir /handson
+hdfs dfs -put tech.txt /handson
+chmod +x *.py
+```
+
+Next, run the following command to run the wordcount program.
+
+```bash
+
+hadoop jar /home/USER/hadoop-3.3.3/share/hadoop/tools/lib/hadoop-streaming-3.3.3.jar \
+    -mapper "$PWD/mapper.py" \
+    -reducer "$PWD/reducer.py 'perseus'" \
+    -input /handson/tech.txt \
+    -output /handson/output-tech
+```
+
+To check the output, execute the following command.
+
+```bash
+hdfs dfs -cat /handson/output-tech/part-00000
+```
+
+Take a screenshot of the terminal output and name it 6a.png.
+
+![6a.png](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/screenshots/6a.png)
+
+## Step 7 - Auto-evaluation
+Auto-evaluation is allowed only once. So make sure you have the following checklist ticked before proceeding.
+* [ ] JPS has 6 processes(including the JPS process)
+* [ ] Step 6 - Running WordCount - Output is correct
+
+For RR campus students, run the following command
+```bash
+python3 eval-rr.pyc
+```
+
+For EC campus students, run the following command
+```bash
+python3 eval-ec.pyc
+```
+
+You can see your score in the terminal output after the program finishes.
+
 To stop all processes when you are done with your work, execute the following command.
 
 ```bash
 cd
 cd hadoop-3.3.3/sbin/
 ./stop-all.sh
-```
-
-## Step 6 - Auto-evaluation
-For your hands-on auto-evaluation, clone this repo first.
-
-```bash
-git clone https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1.git
-```
-
-Then, just run eval.pyc.
-
-```bash
-python3 eval.pyc
 ```
 
 ## Step 7 - Final Assessment
