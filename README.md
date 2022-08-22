@@ -6,7 +6,7 @@ The commands in the guide use ```USER``` as the notation for your username. If y
 
 Change any `/home/USER/` to `/home/<your SRN>/`
 
-This manual includes steps that you will be doing in the classroom. It assumes that you have completed steps 1 and 3 from your home which was emailed earlier. If you have not completed these steps, then click [here](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/H1_HOME.md) to do so.
+This manual includes steps that you will be doing in the classroom. It assumes that you have completed the downloads and installation steps 1-2 from your home which was emailed earlier. If you have not completed these steps, then click [here](https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1/blob/main/H1_HOME.md) to do so.
 
 Execute the following commands to move to the home directory and updating the package list and the system. This guide assumes that you are working with Ubuntu or a Debian based distribution.
 ```bash
@@ -63,8 +63,30 @@ You can access Hadoop on ```localhost  ``` on the following ports
 * DataNode - http://localhost:9864
 * YARN Manager - http://localhost:8088
 
-## Step 6 - Running WordCount
-Now, we will run a sample HDFS commmand to calculate the frequency of a particular word in a text file.
+## Step 6 - Hadoop Examples
+We will be using the Wordcount example to demonstrate the usage of Hadoop.
+Create a text file named ```input.txt``` with any content you want. Next, we will put this to the HDFS folder ```/example``` with the following command.
+```bash
+hdfs dfs -mkdir /example
+hdfs dfs -put input.txt /example
+```
+Run the following command for the wordcount example.
+```bash
+hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-3.3.3.jar wordcount /example/input.txt /example/output
+```
+You can check the output with the following command.
+```bash
+hdfs dfs -cat /example/output/part-r-00000
+```
+
+Take a screenshot of the terminal output and name it 6a.png.
+
+![6a.png](screenshots/6a.png)
+
+
+## Step 7 - Running Custom WordCount
+Now, we will run a sample HDFS commmand to calculate the frequency of a particular word in a text file using our own mapper and reducer files.
+
 Firstly, clone the GitHub repository.
 ```bash
 git clone https://github.com/Cloud-Computing-Big-Data/UE20CS322-H1.git
@@ -82,7 +104,6 @@ chmod +x *.py
 Next, run the following command to run the wordcount program.
 
 ```bash
-
 hadoop jar /home/USER/hadoop-3.3.3/share/hadoop/tools/lib/hadoop-streaming-3.3.3.jar \
     -mapper "$PWD/mapper.py" \
     -reducer "$PWD/reducer.py 'perseus'" \
@@ -96,11 +117,11 @@ To check the output, execute the following command.
 hdfs dfs -cat /handson/output-tech/part-00000
 ```
 
-Take a screenshot of the terminal output and name it 6a.png.
+Take a screenshot of the terminal output and name it 7a.png.
 
-![6a.png](screenshots/6a.png)
+![7a.png](screenshots/7a.png)
 
-## Step 7 - Auto-evaluation
+## Step 8 - Auto-evaluation
 Auto-evaluation is allowed only once. So make sure you have the following checklist ticked before proceeding.
 * [ ] JPS has 6 processes(including the JPS process)
 * [ ] Step 6 - Running WordCount - Output is correct
@@ -125,6 +146,9 @@ cd hadoop-3.3.3/sbin/
 ./stop-all.sh
 ```
 
-## Step 8 - Final Assessment
-Make a word document with all the screenshots and upload the PDF to this [link](https://forms.gle/QZQZQZQZQZQZQZQ).
+## Step 9 - Final Assessment
+Make a word document with all the screenshots from HOME and in-person sessions.
 Your file should be named with the format ```PES1UG20CS999.pdf``` with your SRN.
+
+Submission link for RR Campus: https://forms.gle/
+Submission link for EC Campus: https://forms.gle/
