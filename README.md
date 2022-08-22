@@ -150,5 +150,5 @@ cd hadoop-3.3.3/sbin/
 Make a word document with all the screenshots from HOME and in-person sessions.
 Your file should be named with the format ```PES1UG20CS999.pdf``` with your SRN.
 
-Submission link for RR Campus: https://forms.gle/
-Submission link for EC Campus: https://forms.gle/
+Submission link for RR Campus: [here](https://forms.gle/hiX1rheNnyxQgDMh6)<br>
+Submission link for EC Campus: [here](https://forms.gle/AN2h3FDXSKjq4N6i9)
