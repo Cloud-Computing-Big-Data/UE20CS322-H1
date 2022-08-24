@@ -124,7 +124,7 @@ Take a screenshot of the terminal output and name it 7a.png.
 ## Step 8 - Auto-evaluation
 Auto-evaluation is allowed only once. So make sure you have the following checklist ticked before proceeding.
 * [ ] JPS has 6 processes(including the JPS process)
-* [ ] Step 6 - Running WordCount - Output is correct
+* [ ] Step 7 - Running Custom WordCount - Output is correct
 
 For RR campus students, run the following command
 ```bash
